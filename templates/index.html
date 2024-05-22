@@ -1,0 +1,63 @@
+
+{% include('header.html') %}
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 h-100">
+                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-8 align-self-end">
+                        <h1 class="text-white font-weight-bold">One Place for all the best cafes</h1>
+                        <hr class="divider" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 mb-5">A list of all the best cafes in the London area</p>
+                        <a class="btn btn-primary btn-xl" href="#cafes">Find Cafes</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Cafes -->
+        <section class="page-section" id="cafes">
+            <div class="container px-4 px-lg-5">
+                <h2 class="text-center mt-0">Browse Cafes</h2>
+                <hr class="divider" />
+                
+                {% if cafes: %}
+
+                    <div class="row gx-4 gx-lg-5">
+
+                        <table>
+                            <tr>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Has Sockets</th>
+                                <th>Has Toilet</th>
+                                <th>Has Wifi</th>
+                                <th>Can Take Calls</th>
+                                <th>Seats</th>
+                                <th>Cofee Price</th>
+                            </tr>
+                            {% for cafe in cafes: %}
+
+                                <tr>
+                                    <td>{{ cafe.name }}</td>
+                                    <td><a href="{{ cafe.map_url }}">{{ cafe.location }}</a></td>
+                                    <td>{{ cafe.has_sockets }}</td>
+                                    <td>{{ cafe.has_toilet }}</td>
+                                    <td>{{ cafe.has_wifi }}</td>
+                                    <td>{{ cafe.can_take_calls }}</td>
+                                    <td>{{ cafe.seats }}</td>
+                                    <td>{{ cafe.coffee_price }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        
+
+
+                    </div>"
+
+                {% endif %}
+            </div>
+        </section>
+        <!-- Footer-->
+
+{% include('footer.html') %}
